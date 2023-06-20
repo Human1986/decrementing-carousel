@@ -1,8 +1,8 @@
 package com.epam.rd.autotasks;
 
 public class DecrementingCarousel {
-     private final int capacity;
-    public int[] carousel;
+     private int capacity;
+    public static int[] carousel;
     int index;
     boolean isRun;
     {
@@ -12,8 +12,10 @@ public class DecrementingCarousel {
 
     public DecrementingCarousel(int capacity) {
         this.capacity = capacity;
-        this.carousel = new int[capacity];
+        carousel = new int[capacity];
     }
+
+    public DecrementingCarousel(){}
 
     public boolean addElement(int element){
         if (element > 0 && index < capacity && !isRun) {
@@ -26,7 +28,7 @@ public class DecrementingCarousel {
     public CarouselRun run() {
         if (!isRun) {
             isRun = true;
-            return new CarouselRun(capacity);
+            return new CarouselRun();
         }
         return null;
     }

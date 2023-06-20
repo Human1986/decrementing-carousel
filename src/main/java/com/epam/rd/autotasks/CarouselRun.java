@@ -2,29 +2,25 @@ package com.epam.rd.autotasks;
 
 public class CarouselRun extends DecrementingCarousel {
 
-     protected int position = 0;
-
-    public CarouselRun(int capacity) {
-        super(capacity);
-    }
+    final int[] array = DecrementingCarousel.carousel;
+    int position = 0;
 
 
     public int next() {
-            if (isFinished())
-                return -1;
-            else {
-                while (carousel[position %= carousel.length] <= 0) {
-                    position++;
-                }
+        if (isFinished())
+            return -1;
+        else {
+            while (array[position %= array.length] <= 0) {
+                position++;
             }
-            return carousel[position++]--;
         }
+        return array[position++]--;
+    }
 
-        public boolean isFinished () {
-            for (int el : carousel)
-                if (el > 0)
-                    return false;
-            return true;
-        }
-
+    public boolean isFinished() {
+        for (int el : array)
+            if (el > 0)
+                return false;
+        return true;
+    }
 }
